@@ -1,4 +1,10 @@
 <h1>Cadastro de tipo de Imóvel</h1>
+<% if @property_type.errors.any? %>
+    <% @property_type.errors.full_messages.each do |msg| %>
+        <%= msg %>
+    <% end %>
+<% end %>
+
 <%= form_with(model: @property_type) do |t| %>
   <div>
   <%= t.label :name, 'Tipo de Imóvel' %>

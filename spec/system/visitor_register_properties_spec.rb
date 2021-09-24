@@ -34,3 +34,27 @@ describe 'Visitor register property type' do
     expect(page).to have_content('Tipo de Imóvel: Apartamento')
   end
 end
+
+describe 'Visitor tries to register empty property type' do
+  it 'unsuccessfully' do
+    visit root_path
+    click_on 'Cadastrar tipo de Imóvel'
+    fill_in 'Tipo de Imóvel', with: ''
+    click_on 'Enviar'
+
+    expect(page).to have_content('Cadastro inválido, preencha os campos corretamente')
+  end
+end
+
+describe "Visitor tries to register a property type that is not unique" do
+  it 'unsuccessfully' do
+    PropertyType.create ({ name: 'Casa' })
+
+    visit root_path
+    click_on 'Cadastrar tipo de Imóvel'
+    fill_in 'Tipo de Imóvel', with: 'Casa'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Tipo de imóvel já existente no banco de dados')
+  end
+end

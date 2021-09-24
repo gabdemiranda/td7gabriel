@@ -9,7 +9,11 @@ class PropertyTypesController < ApplicationController
   end
     
   def create
-    t = PropertyType.create(params.require(:property_type).permit(:name))
-    redirect_to t
+    @property_type = PropertyType.create(params.require(:property_type).permit(:name))
+    if @property_type.save
+      redirect_to @property_type
+    else
+      render :new
+    end
   end
 end
