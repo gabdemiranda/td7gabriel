@@ -1,0 +1,8 @@
+<h1>Cadastro de tipo de Imóvel</h1>
+<%= form_with(model: @property_type) do |t| %>
+  <div>
+  <%= t.label :name, 'Tipo de Imóvel' %>
+  <%= t.text_field :name %>
+  </div>
+  <%= t.submit 'Enviar' %>
+<% end %>

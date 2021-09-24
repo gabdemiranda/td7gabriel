@@ -3,6 +3,8 @@
 <nav>
   <%= link_to 'Cadastrar Imóvel', new_property_path %>
 </nav>
+<nav>
+  <%= link_to 'Cadastrar tipo de Imóvel', new_property_type_path %>
 
 <% if @properties.empty? %>
   <div><span>Nenhum imóvel disponível</span></div>

@@ -22,3 +22,15 @@ describe 'Visitor register property' do
     expect(page).to have_content("Diária: R$ 200,00")
   end
 end
+
+describe 'Visitor register property type' do
+  it 'successfully' do
+    visit root_path
+    click_on 'Cadastrar tipo de Imóvel'
+    fill_in 'Tipo de Imóvel', with: 'Apartamento'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Cadastro realizado com sucesso')
+    expect(page).to have_content('Tipo de Imóvel: Apartamento')
+  end
+end
