@@ -1,0 +1,13 @@
+<h1>Cadastro de Região</h1>
+<% if @property_location.errors.any? %>
+    <% @property_location.errors.full_messages.each do |msg| %>
+        <%= msg %>
+    <% end %>
+<% end %>
+<%= form_with(model: @property_location) do |l| %>
+  <div>
+  <%= l.label :name, 'Região' %>
+  <%= l.text_field :name %>
+  </div>
+  <%= l.submit 'Enviar' %>
+<% end %>

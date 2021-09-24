@@ -5,6 +5,10 @@
 </nav>
 <nav>
   <%= link_to 'Cadastrar tipo de Imóvel', new_property_type_path %>
+</nav>
+<nav>
+  <%= link_to 'Cadastrar região', new_property_location_path %>
+</nav>
 
 <% if @properties.empty? %>
   <div><span>Nenhum imóvel disponível</span></div>
