@@ -2,13 +2,16 @@ require 'rails_helper'
 
 describe 'Visitor register property' do
   it 'successfully' do
+    PropertyType.create!(name: 'Casa')
     visit root_path
+    
     click_on 'Cadastrar Imóvel'
     fill_in 'Título', with: 'Casa em Florianópolis'
     fill_in 'Descrição', with: 'Ótima casa perto da UFSC'
     fill_in 'Quartos', with: '3'
     fill_in 'Banheiros', with: '2'
     fill_in 'Diária', with: 200
+    select 'Casa', from: 'Tipo'
     check 'Aceita Pets'
     check 'Vaga de Estacionamento'
     click_on 'Enviar'
@@ -20,6 +23,7 @@ describe 'Visitor register property' do
     expect(page).to have_content("Aceita Pets: Sim")
     expect(page).to have_content("Estacionamento: Sim")
     expect(page).to have_content("Diária: R$ 200,00")
+    expect(page).to have_content("Tipo: Casa")
   end
 end
 
