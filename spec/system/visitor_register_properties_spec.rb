@@ -23,6 +23,21 @@ describe 'Visitor register property' do
   end
 end
 
+describe 'Visitor tries to register empty property fields' do
+  it 'and must fill all fields' do
+    visit root_path
+    click_on 'Cadastrar Imóvel'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Título não pode ficar em branco')
+    expect(page).to have_content('Descrição não pode ficar em branco')
+    expect(page).to have_content('Quartos não pode ficar em branco')
+    expect(page).to have_content('Banheiros não pode ficar em branco')
+    expect(page).to have_content('Diária não pode ficar em branco')
+    expect(Property.count).to eq(0)
+  end
+end
+
 describe 'Visitor register property type' do
   it 'successfully' do
     visit root_path
