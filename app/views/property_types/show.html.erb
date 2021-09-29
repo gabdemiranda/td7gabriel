@@ -1,7 +1,7 @@
-<div>
-<h1>Cadastro realizado com sucesso</h1>
-<dl>
-  <dt>Tipo de Imóvel: <%= @property_type.name %><dt>
-</dl>
-</div>
+<h1>Imóveis do tipo <%= @property_type.name %></h1>
+
+<h2>Imóveis Disponíveis</h2>
+<% @property_type.properties.each do |p| %>
+  <%= link_to(p.title,p) %>
+<% end %> 
 <%= link_to('Voltar', root_path) %>
