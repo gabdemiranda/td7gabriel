@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'Visitor register property' do
   it 'successfully' do
     PropertyType.create!(name: 'Casa')
+    PropertyLocation.create!(name: 'Florianópolis')
     visit root_path
     
     click_on 'Cadastrar Imóvel'
@@ -12,6 +13,7 @@ describe 'Visitor register property' do
     fill_in 'Banheiros', with: '2'
     fill_in 'Diária', with: 200
     select 'Casa', from: 'Tipo'
+    select 'Florianópolis', from: 'Região'
     check 'Aceita Pets'
     check 'Vaga de Estacionamento'
     click_on 'Enviar'
@@ -84,8 +86,7 @@ describe "Visitor tries to register a new property location" do
     fill_in 'Região', with: 'Salvador'
     click_on 'Enviar'
 
-    expect(page).to have_content('Cadastro realizado com sucesso')
-    expect(page).to have_content('Nova região: Salvador')
+    expect(page).to have_content('Imóveis da Região Salvador')
   end
 
   describe 'Visitor tries to register an empty property location' do

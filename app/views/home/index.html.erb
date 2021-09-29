@@ -23,6 +23,15 @@
   </nav>
 </aside>
 
+<aside>
+  <h2>Filtrar por região:</h2>
+  <nav>
+    <% @property_locations.each do |pl| %>
+      <%= link_to pl.name, property_location_path(pl.id) %>
+    <% end %>
+  </nav>
+</aside>
+
 <section>
   <h1>Imóveis Disponíveis</h1>
   <% if @properties.empty? %>

@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-describe 'Visitor filters properties by type' do
+describe 'Visitor filters properties by location' do
   it 'should view links on nav bar' do
-    PropertyType.create!(name: 'Apartamento')
-    PropertyType.create!(name: 'Casa')
-    PropertyType.create!(name: 'Sítio')
+    PropertyLocation.create!(name: 'Salvador')
+    PropertyLocation.create!(name: 'Rio de Janeiro')
+    PropertyLocation.create!(name: 'São Paulo')
 
     visit root_path
 
-    expect(page).to have_link('Apartamento')
-    expect(page).to have_link('Casa') 
-    expect(page).to have_link('Sítio')
+    expect(page).to have_link('Salvador')
+    expect(page).to have_link('Rio de Janeiro') 
+    expect(page).to have_link('São Paulo')
   end
 
   it 'sucessfully' do
@@ -28,7 +28,7 @@ describe 'Visitor filters properties by type' do
                     })
 
     visit root_path
-    click_on 'Casa'
+    click_on 'Rio de Janeiro'
 
     expect(page).to have_link('Casa com quintal em Copacabana')
     expect(page).not_to have_content('Cobertura em Manaus')

@@ -3,14 +3,16 @@ require 'rails_helper'
 describe 'Visitor visit homepage' do
   it 'and view properties' do
     #Arrange => Preparar (os dados)
+    rio = PropertyLocation.create!(name: 'Rio de Janeiro')
+    manaus = PropertyLocation.create!(name: 'Manaus')
     property_type = PropertyType.create!(name: 'Casa')
     property = Property.create!({ title: 'Casa com quintal em Copacabana', 
                                  description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                                 rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500, property_type: property_type
+                                 rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500, property_type: property_type, property_location: rio
                                })
     Property.create!({ title: 'Cobertura em Manaus', 
                       description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
-                      rooms: 5, parking_slot: false, bathrooms: 5, pets: true, daily_rate: 1000, property_type: property_type
+                      rooms: 5, parking_slot: false, bathrooms: 5, pets: true, daily_rate: 1000, property_type: property_type, property_location: manaus
                     })
 
     #Act => Agir (executar a funcionalidade)
@@ -37,14 +39,16 @@ describe 'Visitor visit homepage' do
 
   it 'and view property details' do
     #Arrange => Preparar (os dados)
+    rio = PropertyLocation.create!(name: 'Rio de Janeiro')
+    manaus = PropertyLocation.create!(name: 'Manaus')
     property_type = PropertyType.create!(name: 'Casa')
     property = Property.create!({ title: 'Casa com quintal em Copacabana', 
                                  description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                                 rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500, property_type: property_type
+                                 rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500, property_type: property_type, property_location: rio
                                })
     Property.create!({ title: 'Cobertura em Manaus', 
                       description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
-                      rooms: 5, parking_slot: false, bathrooms: 5, pets: true, daily_rate: 1000, property_type: property_type
+                      rooms: 5, parking_slot: false, bathrooms: 5, pets: true, daily_rate: 1000, property_type: property_type, property_location: manaus
                     })
     #Act => Agir (executar a funcionalidade)
     visit root_path
@@ -62,14 +66,16 @@ describe 'Visitor visit homepage' do
   end
 
   it 'and view property details and return to home page' do
+    rio = PropertyLocation.create!(name: 'Rio de Janeiro')
+    manaus = PropertyLocation.create!(name: 'Manaus')
     property_type = PropertyType.create!(name: 'Casa')
     property = Property.create!({ title: 'Casa com quintal em Copacabana', 
                                  description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                                 rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500, property_type: property_type
+                                 rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500, property_type: property_type, property_location: rio
                                })
     Property.create!({ title: 'Cobertura em Manaus', 
                       description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
-                      rooms: 5, parking_slot: false, bathrooms: 5, pets: true, daily_rate: 1000, property_type: property_type
+                      rooms: 5, parking_slot: false, bathrooms: 5, pets: true, daily_rate: 1000, property_type: property_type, property_location: manaus
                     })
     #Act => Agir (executar a funcionalidade)
     visit root_path
