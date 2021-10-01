@@ -15,7 +15,7 @@ describe 'Visitor register property' do
     select 'Casa', from: 'Tipo'
     select 'Florianópolis', from: 'Região'
     check 'Aceita Pets'
-    check 'Vaga de Estacionamento'
+    check 'Estacionamento'
     click_on 'Enviar'
 
     expect(page).to have_content('Casa em Florianópolis')
@@ -62,7 +62,7 @@ describe 'Visitor tries to register empty property type' do
     fill_in 'Tipo de Imóvel', with: ''
     click_on 'Enviar'
 
-    expect(page).to have_content('Cadastro inválido, preencha os campos corretamente')
+    expect(page).to have_content('Tipo de Imóvel não pode ficar em branco')
   end
 end
 
@@ -75,7 +75,7 @@ describe "Visitor tries to register a property type that is not unique" do
     fill_in 'Tipo de Imóvel', with: 'Casa'
     click_on 'Enviar'
 
-    expect(page).to have_content('Tipo de imóvel já existente no banco de dados')
+    expect(page).to have_content('Tipo de Imóvel já está em uso')
   end
 end
 
@@ -96,7 +96,7 @@ describe "Visitor tries to register a new property location" do
       fill_in 'Região', with: ''
       click_on 'Enviar'
   
-      expect(page).to have_content('Cadastro inválido, preencha os campos corretamente')
+      expect(page).to have_content('Região não pode ficar em branco')
     end
   end
   
@@ -109,7 +109,7 @@ describe "Visitor tries to register a new property location" do
       fill_in 'Região', with: 'Recife'
       click_on 'Enviar'
   
-      expect(page).to have_content('Região já existente no banco de dados')
+      expect(page).to have_content('Região já está em uso')
     end
   end
 end

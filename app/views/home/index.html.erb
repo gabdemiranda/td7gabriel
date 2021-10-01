@@ -38,7 +38,9 @@
     <div><span>Nenhum imóvel disponível</span></div>
   <% end %>
   <% @properties.each do |p| %>
+    <div>
     <%= link_to(p.title, p) %>
+    </div>
     <%= p.description %>
     Quartos: <%= p.rooms %>
   <% end %>
