@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <nav>
+      <% if property_owner_signed_in? %>
+        <p><%= current_property_owner&.email %></p>
+        <p><%= link_to 'Logout', '#' %></p>
+      <% else %>
+        <p><%= link_to 'Entrar', new_property_owner_session_path %></p>
+      <% end %>
+    </nav>
+    <p><%= notice %></p>
+    <p><%= alert %></p>
     <%= yield %>
   </body>
 </html>
