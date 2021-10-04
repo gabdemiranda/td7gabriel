@@ -2,11 +2,14 @@ require 'rails_helper'
 
 describe 'Visitor register property' do
   it 'successfully' do
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
     PropertyType.create!(name: 'Casa')
     PropertyLocation.create!(name: 'Florianópolis')
+
+    login_as property_owner, scope: :property_owner
     visit root_path
-    
     click_on 'Cadastrar Imóvel'
+
     fill_in 'Título', with: 'Casa em Florianópolis'
     fill_in 'Descrição', with: 'Ótima casa perto da UFSC'
     fill_in 'Quartos', with: '3'
@@ -31,6 +34,9 @@ end
 
 describe 'Visitor tries to register empty property fields' do
   it 'and must fill all fields' do
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
+    login_as property_owner, scope: :property_owner
     visit root_path
     click_on 'Cadastrar Imóvel'
     click_on 'Enviar'
